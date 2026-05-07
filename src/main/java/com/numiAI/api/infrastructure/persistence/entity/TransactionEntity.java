@@ -3,6 +3,7 @@ package com.numiAI.api.infrastructure.persistence.entity;
 import com.numiAI.api.domain.model.TransactionCategory;
 import com.numiAI.api.domain.model.TransactionType;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

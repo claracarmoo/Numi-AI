@@ -1,5 +1,7 @@
 package com.numiAI.api.infrastructure;
 
+import com.numiAI.api.application.port.in.GenerateInsightUseCase;
+import com.numiAI.api.application.port.in.ManageTransactionUseCase;
 import com.numiAI.api.application.port.out.AiGateway;
 import com.numiAI.api.application.port.out.VectorStoreGateway;
 import com.numiAI.api.application.usecase.GenerateInsightUseCaseImpl;
@@ -18,15 +20,18 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public ManageTransactionUseCaseImpl manageTransactionUseCase(TransactionRepository transactionRepository) {
-        return new ManageTransactionUseCaseImpl(transactionRepository);
+    public ManageTransactionUseCase manageTransactionUseCase(
+            TransactionRepository transactionRepository) {
+        return (ManageTransactionUseCase) new ManageTransactionUseCaseImpl(transactionRepository);
     }
 
     @Bean
-    public GenerateInsightUseCaseImpl generateInsightUseCase(TransactionRepository transactionRepository,
-                                                              FinancialAnalysisService analysisService,
-                                                              AiGateway aiGateway,
-                                                              VectorStoreGateway vectorStoreGateway) {
-        return new GenerateInsightUseCaseImpl(transactionRepository, analysisService, aiGateway, vectorStoreGateway);
+    public GenerateInsightUseCase generateInsightUseCase(
+            TransactionRepository transactionRepository,
+            FinancialAnalysisService analysisService,
+            AiGateway aiGateway,
+            VectorStoreGateway vectorStoreGateway) {
+        return (GenerateInsightUseCase) new GenerateInsightUseCaseImpl(
+                transactionRepository, analysisService, aiGateway, vectorStoreGateway);
     }
 }

@@ -1,15 +1,14 @@
 package com.numiAI.api.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.util.UUID;
 
 @Entity
 @Table(name = "users")
-@Getter @Setter @NoArgsConstructor
+@Data
+@NoArgsConstructor
 public class UserEntity {
 
     @Id

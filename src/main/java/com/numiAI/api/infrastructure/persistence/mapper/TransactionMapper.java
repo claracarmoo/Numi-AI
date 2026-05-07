@@ -2,6 +2,8 @@ package com.numiAI.api.infrastructure.persistence.mapper;
 
 import com.numiAI.api.domain.model.Transaction;
 import com.numiAI.api.infrastructure.persistence.entity.TransactionEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 public class TransactionMapper {
 
