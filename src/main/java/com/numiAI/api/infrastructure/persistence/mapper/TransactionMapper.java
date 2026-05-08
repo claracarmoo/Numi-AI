@@ -23,7 +23,6 @@ public class TransactionMapper {
 
     public static TransactionEntity toEntity(Transaction domain) {
         TransactionEntity entity = new TransactionEntity();
-        entity.setId(domain.getId());
         entity.setUserId(domain.getUserId());
         entity.setDescription(domain.getDescription());
         entity.setAmount(domain.getAmount());
