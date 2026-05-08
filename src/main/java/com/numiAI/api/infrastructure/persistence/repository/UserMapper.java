@@ -17,10 +17,11 @@ public class UserMapper {
 
     public static UserEntity toEntity(User domain) {
         UserEntity entity = new UserEntity();
-        entity.setId(domain.getId());
+
         entity.setName(domain.getName());
         entity.setEmail(domain.getEmail());
         entity.setPasswordHash(domain.getPasswordHash());
+
         return entity;
     }
 }
