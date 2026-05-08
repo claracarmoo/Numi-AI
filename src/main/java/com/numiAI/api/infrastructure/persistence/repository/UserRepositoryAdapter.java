@@ -2,6 +2,8 @@ package com.numiAI.api.infrastructure.persistence.repository;
 
 import com.numiAI.api.domain.model.User;
 import com.numiAI.api.domain.repository.UserRepository;
+import com.numiAI.api.infrastructure.persistence.entity.UserEntity;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,8 +18,11 @@ public class UserRepositoryAdapter implements UserRepository {
     private final UserJpaRepository jpa;
 
     @Override
+    @Transactional
     public User save(User user) {
-        return UserMapper.toDomain(jpa.save(UserMapper.toEntity(user)));
+        UserEntity entity = UserMapper.toEntity(user);
+        UserEntity saved = jpa.saveAndFlush(entity);
+        return UserMapper.toDomain(saved);
     }
 
     @Override

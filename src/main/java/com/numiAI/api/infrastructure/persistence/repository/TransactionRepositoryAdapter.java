@@ -3,6 +3,7 @@ package com.numiAI.api.infrastructure.persistence.repository;
 import com.numiAI.api.domain.model.Transaction;
 import com.numiAI.api.domain.model.TransactionCategory;
 import com.numiAI.api.domain.repository.TransactionRepository;
+import com.numiAI.api.infrastructure.persistence.entity.TransactionEntity;
 import com.numiAI.api.infrastructure.persistence.mapper.TransactionMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,9 @@ public class TransactionRepositoryAdapter implements TransactionRepository {
 
     @Override
     public Transaction save(Transaction transaction) {
-        return TransactionMapper.toDomain(jpa.save(TransactionMapper.toEntity(transaction)));
+        TransactionEntity entity = TransactionMapper.toEntity(transaction);
+        TransactionEntity saved = jpa.saveAndFlush(entity);
+        return TransactionMapper.toDomain(saved);
     }
 
     @Override
